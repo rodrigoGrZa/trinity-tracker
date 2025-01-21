@@ -1,0 +1,53 @@
+{
+  "name": "trinity-tracker",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cra-template": "1.2.0",
+    "https-browserify": "^1.0.0",
+    "path-browserify": "^1.0.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^4.2.4"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "electron": "^34.0.0",
+    "electron-webpack": "^2.8.2",
+    "wait-on": "^8.0.2"
+  },
+  "main": "public/electron.js",
+  "scripts": {
+    "start": "concurrently \"npm run react-start\" \"npm run electron-start\"",
+    "react-start": "react-scripts start",
+    "electron-start": "wait-on http://localhost:3000 && electron ."
+  },
+  "build": {
+    "appId": "com.beyondcosmos.trinitytracker",
+    "productName": "Trinity Tracker",
+    "win": {
+      "icon": "assets/icon.ico"
+    }
+  },
+  "proxy": "https://127.0.0.1:2999"
+}
