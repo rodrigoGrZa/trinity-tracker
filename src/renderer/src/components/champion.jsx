@@ -11,7 +11,7 @@ const Champion = ({ champion }) => {
   return (
     <div className="champion-card">
       <div className="champion-info">
-        <img src={"https://ddragon.leagueoflegends.com/cdn/15.1.1/img/champion/" + champion.championIcon} className="champion-name" />
+        <img src={"https://ddragon.leagueoflegends.com/cdn/15.2.1/img/champion/" + champion.championIcon} className="champion-name" />
         <div className="summoner-spells">
           <Spell spellIcon={champion.summonerSpells.spellOne.displayName} cooldown={champion.summonerSpells.spellOne.cooldownBase} type={'spell'} />
           <Spell spellIcon={champion.summonerSpells.spellTwo.displayName} cooldown={champion.summonerSpells.spellTwo.cooldownBase} type={'spell'} />
