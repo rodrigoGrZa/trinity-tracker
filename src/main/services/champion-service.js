@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { formatChampionName } from '../util/format-champion-name';
 import { nameMorpher } from '../util/name-morpher';
+import api from './api';
 
 const API_URLS = {
-  SUMMONER_SPELLS: 'https://ddragon.leagueoflegends.com/cdn/15.1.1/data/en_US/summoner.json',
-  CHAMPION_SPELLS: 'https://ddragon.leagueoflegends.com/cdn/15.1.1/data/en_US/champion/',
+  SUMMONER_SPELLS: 'https://ddragon.leagueoflegends.com/cdn/15.2.1/data/en_US/summoner.json',
+  CHAMPION_SPELLS: 'https://ddragon.leagueoflegends.com/cdn/15.2.1/data/en_US/champion/',
   ACTIVE_PLAYER: '/liveclientdata/activeplayername',
   PLAYER_LIST: '/liveclientdata/playerlist',
 };
@@ -44,7 +45,7 @@ const fetchSummonerSpellData = async () =>
  */
 const fetchActivePlayerData = async () =>
   safeFetch(async () => {
-    const response = await axios.get(API_URLS.ACTIVE_PLAYER);
+    const response = await api.get(API_URLS.ACTIVE_PLAYER);
     return { summonerName: response.data };
   });
 
@@ -56,12 +57,12 @@ const fetchActivePlayerData = async () =>
  */
 const fetchEnemyChampionsData = async (summonerName, cooldownData) =>
   safeFetch(async () => {
-    const response = await axios.get(API_URLS.PLAYER_LIST);
+    const response = await api.get(API_URLS.PLAYER_LIST);
     const activeGame = response.data || [];
 
     // Identificar el equipo del jugador activo
     const activePlayerTeam = activeGame.find(
-      (player) => player.summonerName === summonerName
+      (player) => player.summonerName === summonerName.summonerName
     )?.team;
 
     // Filtrar los campeones del equipo enemigo

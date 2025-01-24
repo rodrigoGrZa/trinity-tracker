@@ -6,7 +6,7 @@
  * @returns {string} - URL de la imagen.
  */
 export const imageFetcher = (name, type) => {
-    const BASE_URL = 'https://ddragon.leagueoflegends.com/cdn/15.1.1/img';
+    const BASE_URL = 'https://ddragon.leagueoflegends.com/cdn/15.2.1/img';
     
     if (type === 'spell') {
       return `${BASE_URL}/spell/Summoner${name}.png`;
