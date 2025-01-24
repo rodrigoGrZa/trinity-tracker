@@ -11,7 +11,7 @@ const App = () => {
     return <p>Buscando jugador activo...</p>;
   } else {
     return (
-      <div id='clickThroughElement'>
+      <div>
         <EnemyTeam activePlayer={activePlayer} allChampions={enemyChampions} />
       </div>
     );
@@ -19,3 +19,4 @@ const App = () => {
 };
 
 export default App;
+
