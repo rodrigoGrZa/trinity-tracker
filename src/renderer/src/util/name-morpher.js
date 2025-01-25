@@ -31,6 +31,10 @@ const nameMorpher = (name) => {
         return 'DrMundo';
     }
 
+    if (name === "K'Sante") {
+        return 'KSante';
+    }
+
     return name;    
 }
 
