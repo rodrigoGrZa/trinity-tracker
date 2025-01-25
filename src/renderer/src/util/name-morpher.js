@@ -27,6 +27,10 @@ const nameMorpher = (name) => {
         return 'Haste';
     }
 
+    if (name === 'Dr. Mundo') {
+        return 'DrMundo';
+    }
+
     return name;    
 }
 
