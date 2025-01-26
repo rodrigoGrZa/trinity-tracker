@@ -6,9 +6,17 @@ const nameMorpher = (name) => {
     if (name === 'Primal Smite') {
         return 'Smite';
     }
+    
+    if (name === "Mark") {
+        return 'SnowURFSnowball_Mark';
+    }
 
     if (name === 'Unleashed Smite') {
         return 'Smite';
+    }
+
+    if (name === 'Clarity') {
+        return 'Mana';
     }
 
     if (name === 'Wukong') {
@@ -33,6 +41,10 @@ const nameMorpher = (name) => {
     
     if (name === "K'Sante") {
         return 'KSante';
+    }
+
+    if (name === "Kai'Sa") {
+        return 'Kaisa';
     }
 
     return name;    
