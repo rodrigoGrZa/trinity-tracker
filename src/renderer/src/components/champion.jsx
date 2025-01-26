@@ -1,5 +1,6 @@
 import React from 'react';
 import Spell from './spell';
+import { useState, useEffect } from 'react';
 
 const Champion = ({ champion }) => {
   const getUltimateCooldown = (level) => {
@@ -7,11 +8,25 @@ const Champion = ({ champion }) => {
     if (level >= 11 && level < 16) return champion.ultimateCooldown[1];
     return champion.ultimateCooldown[2];
   };
+  const [imageUrl, setImageUrl] = useState('');
+  
+    useEffect(() => {
+      const fetchImage = async () => {
+        try {
+          const url = await window.api.fetchImage(champion.championIcon, 'champion');
+          setImageUrl(url);
+        } catch (error) {
+          console.error('Error fetching image:', error);
+        }
+      };
+  
+      fetchImage();
+    }, [champion.championIcon]);
 
   return (
     <div className="champion-card">
       <div className="champion-info">
-        <img src={"https://ddragon.leagueoflegends.com/cdn/15.2.1/img/champion/" + champion.championIcon} className="champion-name" />
+        <img src={imageUrl} className="champion-name" />
         <div className="summoner-spells">
           <Spell spellIcon={champion.summonerSpells.spellOne.displayName} cooldown={champion.summonerSpells.spellOne.cooldownBase} type={'spell'} />
           <Spell spellIcon={champion.summonerSpells.spellTwo.displayName} cooldown={champion.summonerSpells.spellTwo.cooldownBase} type={'spell'} />
