@@ -8,6 +8,8 @@ import {
   fetchActivePlayerData,
   fetchEnemyChampionsData,
 } from './services/champion-service';
+import { nameMorpher } from './util/name-morpher';
+import { imageFetcher } from './util/image-fetcher';
 
 let tray;
 
@@ -111,4 +113,9 @@ ipcMain.handle('fetch-active-player', fetchActivePlayerData);
 
 ipcMain.handle('fetch-enemy-champions', async (event, summonerName, cooldownData) => {
   return fetchEnemyChampionsData(summonerName, cooldownData);
+});
+
+ipcMain.handle('fetch-image', (event, spellIcon, type) => {
+  const morphedName = nameMorpher(spellIcon);
+  return imageFetcher(morphedName, type);
 });

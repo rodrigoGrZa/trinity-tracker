@@ -19,4 +19,3 @@ export const imageFetcher = (name, type) => {
     console.error('Invalid parameters passed to imageFetcher:', { name, type });
     return '';
   };
-  

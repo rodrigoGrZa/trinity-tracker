@@ -10,7 +10,9 @@ const api = {}
 if (process.contextIsolated) {
   try {
     contextBridge.exposeInMainWorld('electron', electronAPI)
-    contextBridge.exposeInMainWorld('api', api)
+    contextBridge.exposeInMainWorld('api', {
+      fetchImage: (spellIcon, type) => ipcRenderer.invoke('fetch-image', spellIcon, type),
+    });
     contextBridge.exposeInMainWorld('championService', {
       fetchSummonerSpells: () => ipcRenderer.invoke('fetch-summoner-spells'),
       fetchActivePlayer: () => ipcRenderer.invoke('fetch-active-player'),
