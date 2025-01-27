@@ -1,6 +1,6 @@
 import React from 'react';
 import Spell from './spell';
-import { useState, useEffect } from 'react';
+import useFetchImage from '../hooks/use-fetch-image';
 
 const Champion = ({ champion }) => {
   const getUltimateCooldown = (level) => {
@@ -8,21 +8,8 @@ const Champion = ({ champion }) => {
     if (level >= 11 && level < 16) return champion.ultimateCooldown[1];
     return champion.ultimateCooldown[2];
   };
-  const [imageUrl, setImageUrl] = useState('');
+  const imageUrl = useFetchImage(champion.championIcon, 'champion');
   
-    useEffect(() => {
-      const fetchImage = async () => {
-        try {
-          const url = await window.api.fetchImage(champion.championIcon, 'champion');
-          setImageUrl(url);
-        } catch (error) {
-          console.error('Error fetching image:', error);
-        }
-      };
-  
-      fetchImage();
-    }, [champion.championIcon]);
-
   return (
     <div className="champion-card">
       <div className="champion-info">

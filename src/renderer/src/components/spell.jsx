@@ -1,23 +1,10 @@
 import React from 'react';
 import useCooldown from '../hooks/use-cooldown';
-import { useState, useEffect } from 'react';
+import useFetchImage from '../hooks/use-fetch-image';
 
 const Spell = ({ spellIcon, cooldown, type, }) => {
   const { isOnCooldown, timeRemaining, startCooldown } = useCooldown(cooldown);
-  const [imageUrl, setImageUrl] = useState('');
-
-  useEffect(() => {
-    const fetchImage = async () => {
-      try {
-        const url = await window.api.fetchImage(spellIcon, type);
-        setImageUrl(url);
-      } catch (error) {
-        console.error('Error fetching image:', error);
-      }
-    };
-
-    fetchImage();
-  }, [spellIcon, type]);
+  const imageUrl = useFetchImage(spellIcon, type);
 
   return (
     <div
