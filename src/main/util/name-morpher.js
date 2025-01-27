@@ -9,9 +9,7 @@ export const nameMorpher = (name) => {
         Ignite: 'Dot',
         Cleanse: 'Boost',
         Ghost: 'Haste',
-        'Renata Glasc': 'Renata',
-        "K'Sante": 'KSante',
-        "Kai'Sa": 'Kaisa',
+        'Renata Glasc': 'Renata',           
     };
 
     return morphs[name] || name;
